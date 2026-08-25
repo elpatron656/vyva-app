@@ -1,5 +1,5 @@
 /**
- * 🧠 VYVA MATCH AI — MOTEUR DE MATCHMAKING INTELLIGENT ET ÉQUITABLE
+ * 🧠 VYVA MATCH — MOTEUR DE MATCHMAKING INTELLIGENT ET ÉQUITABLE
  * 
  * Algorithme exclusif VYVA calculant la compatibilité réelle et ludique
  * entre deux utilisateurs selon 5 piliers :
@@ -26,7 +26,7 @@ export interface UserMatchProfile {
   ignoredUserIds: string[];
 }
 
-export class VyvaMatchAIService {
+export class VyvaMatchService {
   /**
    * Calcule un score de compatibilité VYVA (0 % - 100 %)
    */
@@ -87,7 +87,7 @@ export class VyvaMatchAIService {
   }
 
   /**
-   * Sélectionne le meilleur partenaire dans la queue Redis d'attente
+   * Sélectionne le meilleur partenaire dans la queue d'attente
    */
   public findBestMatchInQueue(
     candidate: UserMatchProfile,

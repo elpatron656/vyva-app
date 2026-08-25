@@ -9,7 +9,7 @@ import {
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 import { Logger } from '@nestjs/common';
-import { VyvaMatchAIService, UserMatchProfile } from './vyva-match-ai.service';
+import { VyvaMatchService, UserMatchProfile } from './vyva-match.service';
 
 interface JoinQueuePayload {
   userId: string;
@@ -33,7 +33,7 @@ export class MatchmakingGateway implements OnGatewayConnection, OnGatewayDisconn
   server: Server;
 
   private readonly logger = new Logger(MatchmakingGateway.name);
-  private matchAi = new VyvaMatchAIService();
+  private matchService = new VyvaMatchService();
 
   // Active waiting queue of users
   private waitingQueue: Map<string, { socket: Socket; profile: UserMatchProfile }> = new Map();
@@ -79,7 +79,7 @@ export class MatchmakingGateway implements OnGatewayConnection, OnGatewayDisconn
 
     // Attempt instant match with existing users in queue
     const candidates = Array.from(this.waitingQueue.values()).map((u) => u.profile);
-    const matchResult = this.matchAi.findBestMatchInQueue(userProfile, candidates);
+    const matchResult = this.matchService.findBestMatchInQueue(userProfile, candidates);
 
     if (matchResult) {
       const { partner, score } = matchResult;

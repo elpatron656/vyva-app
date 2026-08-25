@@ -58,7 +58,7 @@ export default function SearchingRadar({ onMatchFound, onCancel, gender, mode, s
     }, 600);
 
     const step1 = setTimeout(() => {
-      setSearchStep(`Connexion aux serveurs VYVA AI (${countryName})...`);
+      setSearchStep(`Connexion aux serveurs VYVA (${countryName})...`);
     }, 1200);
 
     const step2 = setTimeout(() => {
@@ -121,7 +121,7 @@ export default function SearchingRadar({ onMatchFound, onCancel, gender, mode, s
         </div>
 
         <h2 style={{ fontSize: '22px', fontWeight: '800', marginBottom: '6px' }}>
-          {mode === 'MYSTERY' ? '🎭 MYSTERY MATCH' : 'VYVA MATCH AI'}
+          {mode === 'MYSTERY' ? '🎭 MYSTERY MATCH' : 'VYVA MATCH'}
         </h2>
         <p style={{ fontSize: '13px', color: 'var(--vyva-text-muted)' }}>{searchStep}</p>
       </div>

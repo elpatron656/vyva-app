@@ -64,7 +64,7 @@ export default function VyvaMomentModal({ partnerName, onCompleted }) {
       </div>
 
       <p style={{ marginTop: '24px', fontSize: '11px', color: 'var(--vyva-text-muted)', maxWidth: '260px' }}>
-        Données utilisées anonymement par VYVA MATCH AI pour affiner tes suggestions futures.
+        Données utilisées anonymement par le système VYVA MATCH pour affiner tes suggestions futures.
       </p>
     </div>
   );

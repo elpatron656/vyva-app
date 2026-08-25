@@ -116,7 +116,7 @@ class _VyvaHomeScreenState extends State<VyvaHomeScreen> {
           GestureDetector(
             onTap: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Recherche de partenaire VYVA MATCH AI en cours...')),
+                const SnackBar(content: Text('Recherche de partenaire VYVA MATCH en cours...')),
               );
             },
             child: Container(

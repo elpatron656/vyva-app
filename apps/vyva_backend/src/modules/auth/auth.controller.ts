@@ -7,7 +7,15 @@ export class AuthController {
 
   @Post('register')
   @HttpCode(HttpStatus.CREATED)
-  async register(@Body() body: { email: string; password?: string; displayName: string; gender?: 'MALE' | 'FEMALE' | 'NON_BINARY' }) {
+  async register(
+    @Body() body: {
+      email: string;
+      password?: string;
+      displayName: string;
+      gender?: 'MALE' | 'FEMALE' | 'NON_BINARY';
+      referralCode?: string;
+    }
+  ) {
     return await this.authService.register(body);
   }
 
@@ -19,8 +27,20 @@ export class AuthController {
 
   @Post('google')
   @HttpCode(HttpStatus.OK)
-  async googleAuth(@Body() body: { googleToken: string; email?: string; displayName?: string }) {
+  async googleAuth(
+    @Body() body: {
+      googleToken: string;
+      email?: string;
+      displayName?: string;
+      referralCode?: string;
+    }
+  ) {
     return await this.authService.googleAuth(body);
+  }
+
+  @Get('referral-info')
+  async getReferralInfo(@Query('userId') userId?: string) {
+    return await this.authService.getReferralInfo(userId || 'usr_me_77');
   }
 
   @Get('me')
