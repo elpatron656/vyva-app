@@ -1,0 +1,42 @@
+# ─── Dependencies ────────────────────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# ─── Build outputs ───────────────────────────────────────────────────────────
+dist/
+build/
+.gradle/
+*.class
+
+# ─── Environment variables (NEVER commit secrets) ───────────────────────────
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ─── IDE ─────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# ─── OS ──────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ─── Capacitor / Android / iOS ───────────────────────────────────────────────
+apps/vyva_web_app/android/.gradle/
+apps/vyva_web_app/android/app/build/
+apps/vyva_web_app/ios/App/Pods/
+apps/vyva_web_app/ios/App/App/public/
+apps/vyva_web_app/android/app/src/main/assets/public/
+apps/vyva_web_app/node_modules/
+apps/vyva_web_app/dist/
+
+# ─── Backend ─────────────────────────────────────────────────────────────────
+apps/vyva_backend/node_modules/
+apps/vyva_backend/dist/

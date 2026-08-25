@@ -4,7 +4,7 @@
   "description": "VYVA Real-Time Video Social App API & Matchmaking Engine",
   "main": "dist/main.js",
   "scripts": {
-    "build": "tsc",
+    "build": "node -e \"const fs=require('fs');if(fs.existsSync('dist')){fs.rmSync('dist',{recursive:true,force:true});}\" && tsc",
     "start": "node dist/main.js",
     "dev": "ts-node-dev --respawn --transpile-only src/main.ts"
   },
