@@ -11,14 +11,17 @@ const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const iap_controller_1 = require("./modules/iap/iap.controller");
 const iap_service_1 = require("./modules/iap/iap.service");
+const auth_controller_1 = require("./modules/auth/auth.controller");
+const auth_service_1 = require("./modules/auth/auth.service");
+const matchmaking_gateway_1 = require("./modules/matchmaking/matchmaking.gateway");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [],
-        controllers: [app_controller_1.AppController, iap_controller_1.IapController],
-        providers: [iap_service_1.IapService],
+        controllers: [app_controller_1.AppController, iap_controller_1.IapController, auth_controller_1.AuthController],
+        providers: [iap_service_1.IapService, auth_service_1.AuthService, matchmaking_gateway_1.MatchmakingGateway],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map
