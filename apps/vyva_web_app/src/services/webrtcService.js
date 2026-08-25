@@ -18,10 +18,34 @@ export class VyvaWebRTCClient {
     
     this.configuration = {
       iceServers: [
+        // ── STUN servers (Google fallback + Metered) ──────────────────────
         { urls: 'stun:stun.l.google.com:19302' },
         { urls: 'stun:stun1.l.google.com:19302' },
-        { urls: 'stun:stun2.l.google.com:19302' }
-      ]
+        { urls: 'stun:stun.relay.metered.ca:80' },
+
+        // ── TURN servers Metered.ca (required for 4G ↔ 4G connections) ───
+        {
+          urls: 'turn:global.relay.metered.ca:80',
+          username: '611a6da22d24e28b77071aa2',
+          credential: '1dXRnZDR3ZGL4Q0o'
+        },
+        {
+          urls: 'turn:global.relay.metered.ca:80?transport=tcp',
+          username: '611a6da22d24e28b77071aa2',
+          credential: '1dXRnZDR3ZGL4Q0o'
+        },
+        {
+          urls: 'turn:global.relay.metered.ca:443',
+          username: '611a6da22d24e28b77071aa2',
+          credential: '1dXRnZDR3ZGL4Q0o'
+        },
+        {
+          urls: 'turns:global.relay.metered.ca:443?transport=tcp',
+          username: '611a6da22d24e28b77071aa2',
+          credential: '1dXRnZDR3ZGL4Q0o'
+        }
+      ],
+      iceCandidatePoolSize: 10
     };
   }
 
