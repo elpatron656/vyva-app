@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'core/constants/vyva_colors.dart';
+import 'features/store/store_screen.dart';
 
 void main() {
   runApp(const VyvaApp());
@@ -38,6 +39,7 @@ class VyvaHomeScreen extends StatefulWidget {
 
 class _VyvaHomeScreenState extends State<VyvaHomeScreen> {
   int _currentIndex = 0;
+  int _userCoins = 150;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +50,10 @@ class _VyvaHomeScreenState extends State<VyvaHomeScreen> {
           children: [
             _buildMatchCenter(),
             const Center(child: Text("Chat & Matchs")),
-            const Center(child: Text("Boutique VYVA")),
+            VyvaStoreScreen(
+              userCoins: _userCoins,
+              onCoinsUpdated: (newCoins) => setState(() => _userCoins = newCoins),
+            ),
             const Center(child: Text("Profil Utilisateur")),
           ],
         ),
@@ -86,19 +91,22 @@ class _VyvaHomeScreenState extends State<VyvaHomeScreen> {
                   style: TextStyle(fontSize: 32, fontWeight: FontWeight.w900, color: Colors.white),
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                decoration: BoxDecoration(
-                  color: VyvaColors.card,
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: VyvaColors.secondary.withOpacity(0.4)),
-                ),
-                child: const Row(
-                  children: [
-                    Icon(Icons.monetization_on, color: VyvaColors.secondary, size: 18),
-                    SizedBox(width: 6),
-                    Text('150 Coins', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
-                  ],
+              GestureDetector(
+                onTap: () => setState(() => _currentIndex = 2), // Go to Boutique
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: VyvaColors.card,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: VyvaColors.secondary.withOpacity(0.4)),
+                  ),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.monetization_on, color: VyvaColors.secondary, size: 18),
+                      const SizedBox(width: 6),
+                      Text('$_userCoins Coins', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+                    ],
+                  ),
                 ),
               ),
             ],
