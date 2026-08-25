@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ShieldAlert, X, AlertTriangle, CheckCircle2 } from 'lucide-react';
+import { ShieldAlert, X, CheckCircle2 } from 'lucide-react';
+import { submitReport } from '../services/signalingService';
 
 export default function ReportModal({ reportedUser, onClose, onSubmitReport }) {
   const [reason, setReason] = useState('NUDITY_OR_EXPLICIT');
@@ -14,12 +15,18 @@ export default function ReportModal({ reportedUser, onClose, onSubmitReport }) {
     { id: 'OTHER', label: '⚠️ Autre comportement inapproprié' }
   ];
 
-  const handleSubmit = () => {
-    onSubmitReport({ reportedUser, reason, comment });
+  const handleSubmit = async () => {
+    // Submit to live VYVA backend
+    await submitReport({
+      reportedUserId: reportedUser?.id || reportedUser?.name || 'unknown',
+      reason,
+      comment
+    });
+    if (onSubmitReport) onSubmitReport({ reportedUser, reason, comment });
     setSubmitted(true);
     setTimeout(() => {
       onClose();
-    }, 1500);
+    }, 1800);
   };
 
   return (

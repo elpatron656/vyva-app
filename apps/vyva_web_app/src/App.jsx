@@ -181,7 +181,8 @@ export default function App() {
       position: 'relative'
     }}>
       
-      {/* Top Demo Toolbar */}
+      {/* Dev Toolbar — visible only during local development */}
+      {import.meta.env.DEV && (
       <div className="demo-top-toolbar" style={{
         position: 'fixed',
         top: '16px',
@@ -238,7 +239,7 @@ export default function App() {
 
         <span style={{ color: 'rgba(255,255,255,0.2)' }}>|</span>
 
-        {/* USB Camera Test Button */}
+        {/* Camera Test Button */}
         <button
           onClick={() => setShowCameraTestModal(true)}
           style={{
@@ -278,6 +279,7 @@ export default function App() {
           <span>Admin</span>
         </button>
       </div>
+      )}
 
       {/* Main View Container */}
       {viewMode === 'ADMIN' ? (
