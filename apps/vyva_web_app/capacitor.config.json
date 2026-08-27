@@ -1,5 +1,5 @@
 {
-  "appId": "com.vyva.app",
+  "appId": "com.vyvasocial.app",
   "appName": "VYVA",
   "webDir": "dist",
   "bundledWebRuntime": false,
